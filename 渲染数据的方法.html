@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 原始模板渲染 -->
+     <ul  id="ul"></ul>
+     <!-- 数据join -->
+     <ul id="jion">
+    
+     </ul>
+     <ul id="es6">
+
+     </ul>
+</head>
+<body>
+    <script>
+         //原始效率最低的模板渲染
+        const   arr =[
+            {name:'我是张飞',age:'18'},
+            {name:'我是关羽',age:"22"},
+            {name:"我是刘备",age:"25"}
+        ]  
+        // 先获取到父亲的dom 节点
+        const ul = document.querySelector("#ul")
+        //然后我们在遍历数据创建dom节点再添加到父元素 ul里面
+         arr.forEach((value,index,arr)=>{
+             let li  = document.createElement("li")
+             let age = document.createElement("p")
+             li.innerHTML = value.name
+             age.innerHTML = value.age
+             li.appendChild(age)
+             ul.appendChild(li)
+         })  
+         //数组jion 法
+         var a =document.querySelector("#jion")
+         console.log(a)
+         arr.forEach((value,index,arr)=>{
+             a.innerHTML+=[
+              '<li>'+value.name,
+              '<p>'+value.age+'</p>',
+              '</li>'
+             ].join('')
+         })
+         //es6 反引号法
+         var a =document.querySelector("#es6")
+         console.log(a)
+         arr.forEach((value,index,arr)=>{
+             a.innerHTML+=
+             `
+              <li>+ ${value.name}
+              <p>+${value.age}+</p>
+              </li>
+             `
+         })
+
+
+    </script>
+</body>
+</html>
